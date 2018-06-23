@@ -1,0 +1,31 @@
+1. DAO의 분리 = 모듈화
+	* Example: UserDAO Class, UserDAO2 Class, ...
+	(1) 분리
+		A. 변경과 발전은 한 번에 한 가지 관심사항에 집중해서 일어난다.
+		B. UserDAO의 관심사항
+			- DB Connection
+			- add()를 위해 Statement 만들고 실행 및 바인딩
+			- 자원 반납
+		C. 분리 단계
+			a. 클래스로 분리 중복 코드의 메소드 추출
+				- UserDAO2.java
+			b. 클래스로 분리 (상속을 통한 추상화) : 각각 사용하는 DBMS가 다를 경우 추상클래스를 통한 구현
+				- UserDAO3.java : 추상 클래스
+				- NUserDAO.java : 서브 클래스
+				- DUserDAO.java : 서브 클래스
+			c. 클래스로 분리 (상속이 없는 완전한 독립)
+				- ConnectionMaker.java : interface
+				- SimpleConnectionMaker.java : interface의 유연한 구현. 연결 담당
+				- NConnectionMaker.java : interface의 유연한 구현. 연결 담당
+				- UserDAO4.java
+				- 의의 : 제어의 역전(IoC)을 통해 필요한 객체 데이터를 주입받는다(DI).
+		D. 개방 폐쇄 원칙(OCP : Oriented Closed Principle)
+			- 클래스나 모듈은 확장에는 열려있어야 하고 변경에는 닫혀있어야 한다.
+		E. 강한 연결과 약한 연결
+			a. 강한 연결 : 객체를 직접 생성하는 경우
+			b. 약한 연결 : 외부(=Client)에서 객체 생성을 위임하는 겅유
+		F. 팩토리 : 객체의 생성 방법을 결정하고 그렇게 만들어진 오브젝트를 돌려주는 역할	
+			- DaoFactory.java
+			
+			
+			

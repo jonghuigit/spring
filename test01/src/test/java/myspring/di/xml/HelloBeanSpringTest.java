@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+// 설정 정보 파일
 @ContextConfiguration(locations="classpath:config/beans.xml")
 public class HelloBeanSpringTest {
 	// 설정정보(ContextConfiguration)에서 주입 받겠다는 것을 의미
